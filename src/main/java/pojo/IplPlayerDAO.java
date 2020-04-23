@@ -90,6 +90,8 @@ public class IplPlayerDAO {
            Comparator<IplPlayerDAO> wkt = Comparator.comparing(iplBatsmanData -> iplBatsmanData.wicketsTaken, Comparator.reverseOrder());
            return wkt.thenComparing(iplBatsmanData -> iplBatsmanData.bowlingAverage, Comparator.reverseOrder());
        }
+       if (mode.equals(CricketLeagueAnalyser.SortingMode.BATTING_AND_BOWLING_AVG))
+           return Comparator.comparing(iplBatsmanData -> (iplBatsmanData.battingAverage+iplBatsmanData.bowlingAverage), Comparator.reverseOrder());
        return null;
    }
     public Object getIplDTO(CricketLeagueAnalyser.PlayerType playerType) {

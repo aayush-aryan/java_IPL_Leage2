@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class CricketLeagueAnalyser {
     public enum SortingMode {BATTING_AVG,STRIKE_RATE,SIXES,FOURS,STRIKE_RATE_WITH_SIX,STRIKE_RATE_WITH_FOUR,
                           AVG_WITH_STRIKE_RATE,RUNS_WITH_AVG,BOWLING_AVG,STRIKE_RATE_OF_BOWLER,ECONOMY_RATE,
-                          SR_WITH_FIVE_WKT,SR_WITH_FOUR_WKT,BOWLING_AVG_WITH_SR,WKT_WITH_BOWLING_AVG}
+                          SR_WITH_FIVE_WKT,SR_WITH_FOUR_WKT,BOWLING_AVG_WITH_SR,WKT_WITH_BOWLING_AVG,BATTING_AND_BOWLING_AVG}
     Map<String, IplPlayerDAO> iplPlayerDAOMap = new HashMap<String, IplPlayerDAO>();
     public enum PlayerType {BATSMAN,BOWLER}
     private PlayerType playerType;
@@ -32,7 +32,7 @@ public class CricketLeagueAnalyser {
                 .collect(Collectors.toCollection(ArrayList::new));
         return new Gson().toJson(iplSortedData);
     }
-    public String sortBasedOnMaxWktWithBowlingAverage() throws CSVBuilderException {
-        return getSortedIplData(SortingMode.WKT_WITH_BOWLING_AVG);
+    public String sortBasedOnBattingAndBowlingAverage() throws CSVBuilderException {
+        return getSortedIplData(SortingMode.BATTING_AND_BOWLING_AVG);
     }
 }
