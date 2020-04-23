@@ -49,12 +49,12 @@ public class CricketLeagueAnalyserTest {
         }
     }
     @Test
-    public void givenCricketLeagueCsvFileShouldReturnWhoTookMaxWktWithBestBowlingAverage() {
+    public void givenCricketLeagueCsvFileShouldReturnWhoHadTheBestBattingAndBowlingAverage() {
         try {
             leagueAnalyser.loadIplData(CORRECTED_BOWLING_CSV);
-            String sortBasedOnBattingAverage = leagueAnalyser.sortBasedOnMaxWktWithBowlingAverage();
+            String sortBasedOnBattingAverage = leagueAnalyser.sortBasedOnBattingAndBowlingAverage();
             IplBatsmanDTO[] batsmenArray = new Gson().fromJson(sortBasedOnBattingAverage,IplBatsmanDTO[].class);
-            Assert.assertEquals("Imran Tahir",batsmenArray[0].playerName);
+            Assert.assertEquals("Krishnappa Gowtham",batsmenArray[0].playerName);
         } catch (CSVBuilderException e) {
                 e.printStackTrace();
         }
